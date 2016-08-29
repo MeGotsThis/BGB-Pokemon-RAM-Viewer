@@ -1,0 +1,230 @@
+﻿<Window x:Class="BGB_Pokemon.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BGB_Pokemon"
+        mc:Ignorable="d"
+        Title="BGB Pokemon Viewer"
+        MinHeight="625" MinWidth="650"
+        Height="625" Width="650">
+    <StackPanel>
+        <Grid>
+            <Label FontSize="24" Name="process" Content="No Process found" />
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label Grid.ColumnSpan="2" FontSize="32">Overworld</Label>
+
+                    <Label Grid.Row="1" FontSize="24">X</Label>
+                    <Label Grid.Row="2" FontSize="24">Y</Label>
+                    <Label Grid.Row="3" FontSize="24">Map</Label>
+                    <Label Grid.Row="5" FontSize="24">Enc Rate</Label>
+                    <Label Grid.Row="6" FontSize="24">Time</Label>
+
+                    <Label Grid.Row="1" Grid.Column="1" FontSize="24" Name="overworld_x" />
+                    <Label Grid.Row="2" Grid.Column="1" FontSize="24" Name="overworld_y" />
+                    <Label Grid.Row="3" Grid.Column="1" FontSize="24" Name="overworld_mapid" />
+                    <Label Grid.Row="4" Grid.ColumnSpan="2" FontSize="16" Name="overworld_mapname">&#160;</Label>
+                    <Label Grid.Row="5" Grid.Column="1" FontSize="24" Name="overworld_encounter_rate" />
+                    <Label Grid.Row="6" Grid.Column="1" FontSize="24" Name="overworld_time" />
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label Grid.ColumnSpan="2" FontSize="32">RNG</Label>
+
+                    <Label Grid.Row="1" FontSize="24">hRandomAdd</Label>
+                    <Label Grid.Row="2" FontSize="24">hRandomSub</Label>
+                    <Label Grid.Row="3" FontSize="24">Sum</Label>
+
+                    <Label Grid.Row="1" Grid.Column="1" FontSize="24" Name="rng_hRanAdd" />
+                    <Label Grid.Row="2" Grid.Column="1" FontSize="24" Name="rng_hRanSub" />
+                    <Label Grid.Row="3" Grid.Column="1" FontSize="24" Name="rng_dsum" />
+                </Grid>
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label Grid.ColumnSpan="2" FontSize="32" Name="battle">Battle DV</Label>
+
+                    <Label Grid.Row="1" FontSize="24">Pokemon</Label>
+                    <Label Grid.Row="2" FontSize="24">Level</Label>
+                    <Label Grid.Row="3" FontSize="24">Hex DV</Label>
+                    <Label Grid.Row="4" FontSize="24">HP</Label>
+                    <Label Grid.Row="5" FontSize="24">Attack</Label>
+                    <Label Grid.Row="6" FontSize="24">Defense</Label>
+                    <Label Grid.Row="7" FontSize="24">Speed</Label>
+                    <Label Grid.Row="8" FontSize="24">Special</Label>
+
+                    <Label Grid.Row="1" Grid.Column="1" FontSize="24" Name="battle_pokemon" />
+                    <Label Grid.Row="2" Grid.Column="1" FontSize="24" Name="battle_level" />
+                    <Label Grid.Row="3" Grid.Column="1" FontSize="24" Name="battle_hex_dv" />
+                    <Label Grid.Row="4" Grid.Column="1" FontSize="24" Name="battle_hp" />
+                    <Label Grid.Row="5" Grid.Column="1" FontSize="24" Name="battle_attack" />
+                    <Label Grid.Row="6" Grid.Column="1" FontSize="24" Name="battle_defense" />
+                    <Label Grid.Row="7" Grid.Column="1" FontSize="24" Name="battle_speed" />
+                    <Label Grid.Row="8" Grid.Column="1" FontSize="24" Name="battle_special" />
+                </Grid>
+                <StackPanel Orientation="Horizontal">
+                    <Label VerticalAlignment="Center" FontSize="20">Refresh Rate</Label>
+                    <ComboBox VerticalAlignment="Center" Width="120" SelectedIndex="0" Name="refreshRate" SelectionChanged="refreshRate_SelectionChanged">
+                        <ComboBoxItem>1/120 second</ComboBoxItem>
+                        <ComboBoxItem>1/60 second</ComboBoxItem>
+                        <ComboBoxItem>1/30 second</ComboBoxItem>
+                        <ComboBoxItem>1/20 second</ComboBoxItem>
+                        <ComboBoxItem>1/15 second</ComboBoxItem>
+                        <ComboBoxItem>1/10 second</ComboBoxItem>
+                        <ComboBoxItem>1/5 second</ComboBoxItem>
+                        <ComboBoxItem>1/4 second</ComboBoxItem>
+                        <ComboBoxItem>1/3 second</ComboBoxItem>
+                        <ComboBoxItem>1/2 second</ComboBoxItem>
+                        <ComboBoxItem>1 second</ComboBoxItem>
+                        <ComboBoxItem>2 second</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Label FontSize="24" VerticalAlignment="Center">Enc. Slots</Label>
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                
+                <StackPanel Grid.Column="0">
+                    <Label VerticalAlignment="Center" HorizontalContentAlignment="Center" FontSize="14" Name="slot0Enc">--%</Label>
+                    <StackPanel Orientation="Horizontal">
+                        <Label VerticalAlignment="Center" FontSize="16">1</Label>
+                        <CheckBox VerticalAlignment="Center" Name="slot0" />
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1">
+                    <Label VerticalAlignment="Center" HorizontalContentAlignment="Center" FontSize="14" Name="slot1Enc">--%</Label>
+                    <StackPanel Orientation="Horizontal">
+                        <Label VerticalAlignment="Center" FontSize="16">2</Label>
+                        <CheckBox VerticalAlignment="Center" Name="slot1" />
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Column="2">
+                    <Label VerticalAlignment="Center" HorizontalContentAlignment="Center" FontSize="14" Name="slot2Enc">--%</Label>
+                    <StackPanel Orientation="Horizontal">
+                        <Label VerticalAlignment="Center" FontSize="16">3</Label>
+                        <CheckBox VerticalAlignment="Center" Name="slot2" />
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Column="3">
+                    <Label VerticalAlignment="Center" HorizontalContentAlignment="Center" FontSize="14" Name="slot3Enc">--%</Label>
+                    <StackPanel Orientation="Horizontal">
+                        <Label VerticalAlignment="Center" FontSize="16">4</Label>
+                        <CheckBox VerticalAlignment="Center" Name="slot3" />
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Column="4">
+                    <Label VerticalAlignment="Center" HorizontalContentAlignment="Center" FontSize="14" Name="slot4Enc">--%</Label>
+                    <StackPanel Orientation="Horizontal">
+                        <Label VerticalAlignment="Center" FontSize="16">5</Label>
+                        <CheckBox VerticalAlignment="Center" Name="slot4" />
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Column="5">
+                    <Label VerticalAlignment="Center" HorizontalContentAlignment="Center" FontSize="14" Name="slot5Enc">--%</Label>
+                    <StackPanel Orientation="Horizontal">
+                        <Label VerticalAlignment="Center" FontSize="16">6</Label>
+                        <CheckBox VerticalAlignment="Center" Name="slot5" />
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Column="6">
+                    <Label VerticalAlignment="Center" HorizontalContentAlignment="Center" FontSize="14" Name="slot6Enc">--%</Label>
+                    <StackPanel Orientation="Horizontal">
+                        <Label VerticalAlignment="Center" FontSize="16">7</Label>
+                        <CheckBox VerticalAlignment="Center" Name="slot6" />
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Column="7">
+                    <Label VerticalAlignment="Center" HorizontalContentAlignment="Center" FontSize="14" Name="slot7Enc">--%</Label>
+                    <StackPanel Orientation="Horizontal">
+                        <Label VerticalAlignment="Center" FontSize="16">8</Label>
+                        <CheckBox VerticalAlignment="Center" Name="slot7" />
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Column="8">
+                    <Label VerticalAlignment="Center" HorizontalContentAlignment="Center" FontSize="14" Name="slot8Enc">--%</Label>
+                    <StackPanel Orientation="Horizontal">
+                        <Label VerticalAlignment="Center" FontSize="16">9</Label>
+                        <CheckBox VerticalAlignment="Center" Name="slot8" />
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Column="9">
+                    <Label VerticalAlignment="Center" HorizontalContentAlignment="Center" FontSize="14" Name="slot9Enc">--%</Label>
+                    <StackPanel Orientation="Horizontal">
+                        <Label VerticalAlignment="Center" FontSize="16">10</Label>
+                        <CheckBox VerticalAlignment="Center" Name="slot9" />
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </StackPanel>
+</Window>
